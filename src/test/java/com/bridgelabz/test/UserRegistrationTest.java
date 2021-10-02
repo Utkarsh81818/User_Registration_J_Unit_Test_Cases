@@ -16,6 +16,7 @@ public class UserRegistrationTest {
     /**
      * Unit test for validating first name
      */
+
     @Test
     public void givenFirstName_WhenProper_ShouldReturnTrue() {
         boolean result = userRegistration.firstName("Utkarsh");
@@ -30,6 +31,7 @@ public class UserRegistrationTest {
     /**
      * Unit test for validating last name
      */
+
     @Test
     public void givenLastName_WhenProper_ShouldReturnTrue() {
         boolean result = userRegistration.lastName("Mishra");
@@ -45,6 +47,7 @@ public class UserRegistrationTest {
     /**
      * Unit test for validating email address
      */
+
     @Test
     public void givenEmail_WhenProper_ShouldReturnTrue() {
         boolean result = userRegistration.email("abc@gmail.com.com");
@@ -59,6 +62,7 @@ public class UserRegistrationTest {
     /**
      * Unit test for validating format of mobile number
      */
+
     @Test
     public void givenPhoneNumber_WhenProper_ShouldReturnTrue() {
         boolean result = userRegistration.phoneNumber("91 7844999888");
@@ -73,6 +77,7 @@ public class UserRegistrationTest {
     /**
      * Unit test for validating password with minimum 8 character
      */
+
     @Test
     public void givenPassword_WhenProper_ShouldReturnTrue() {
         boolean result = userRegistration.password("password@123");
@@ -87,6 +92,7 @@ public class UserRegistrationTest {
     /**
      * Unit test for validating password with atleast one upper case
      */
+
     @Test
     public void givenPasswordRule2_WhenProper_ShouldReturnTrue() {
         boolean result = userRegistration.passwordRule2("passWord@123");
@@ -101,6 +107,7 @@ public class UserRegistrationTest {
     /**
      * Unit test for validating password with atleast one numeric number
      */
+
     @Test
     public void givenPasswordRule3_WhenProper_ShouldReturnTrue() {
         boolean result = userRegistration.passwordRule3("123Aa@123");
@@ -115,6 +122,7 @@ public class UserRegistrationTest {
     /**
      * Unit test for validating password with exactly one special character
      */
+
     @Test
     public void givenPasswordRule4_WhenProper_ShouldReturnTrue() {
         boolean result = userRegistration.passwordRule4("1234@Abc");
@@ -123,6 +131,21 @@ public class UserRegistrationTest {
     @Test
     public void givenPasswordRule4_WhenNotProper_ShouldReturnFalse() {
         boolean result = userRegistration.passwordRule4("akdj@ds@A");
+        Assert.assertEquals(false, result);
+    }
+
+    /**
+     * Unit test for validating email sequence
+     */
+
+    @Test
+    public void givenEmail1_WhenProper_ShouldReturnTrue() {
+        boolean result = userRegistration.emailIdValidator("abc.100@abc.com.au");
+        Assert.assertEquals(true, result);
+    }
+    @Test
+    public void givenEmail1_WhenNotProper_ShouldReturnFalse() {
+        boolean result = userRegistration.emailIdValidator("abc()*@gmail.com");
         Assert.assertEquals(false, result);
     }
 }
