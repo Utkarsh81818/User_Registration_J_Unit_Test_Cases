@@ -3,7 +3,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Purpose  - As a User need to enter a valid password with atleast one numeric number
+ * Purpose  - As a User need to enter a valid password with exactly one special character
  * @author  - Utkarsh Mishra
  * @version - 16.0
  * @since   - 2021-10-02
@@ -75,6 +75,16 @@ public class UserRegistration {
     */
     public boolean passwordRule3(String password) {
         String regex = "^(?=.*[A-Z]){1}(?=.*[a-z])(?=.*[0-9]).{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+
+    /*
+    Created a method to validate password with exactly one special character
+    */
+    public boolean passwordRule4(String password) {
+        String regex = "^(?=.*[A-Z]){1}(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%!]).{8,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
