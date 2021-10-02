@@ -21,7 +21,7 @@ public class UserRegistration {
     }
 
     /*
-    Created a method to validate first name
+    Created a method to validate last name
      */
     public boolean lastName(String lastName) {
         String regex = "^[A-Z]{1}[a-z]{2,}$";
