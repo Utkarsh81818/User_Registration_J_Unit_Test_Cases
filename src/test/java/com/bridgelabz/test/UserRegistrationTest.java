@@ -1,6 +1,7 @@
 package com.bridgelabz.test;
 
 import com.bridgelabz.UserRegistration;
+import com.bridgelabz.main.MoodAnalyser;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -147,5 +148,20 @@ public class UserRegistrationTest {
     public void givenEmail1_WhenNotProper_ShouldReturnFalse() {
         boolean result = userRegistration.emailIdValidator("abc()*@gmail.com");
         Assert.assertEquals(false, result);
+    }
+
+    /**
+     * Unit test for validating mood of the User
+     */
+
+    @Test
+    public void givenMessage_WhenHappy_ShouldReturnEntrySuccessful() {
+        String result = MoodAnalyser.analyseMood("User is Happy");
+        Assert.assertEquals("Entry Successful", result);
+    }
+    @Test
+    public void givenEmail2_WhenNotProper_ShouldReturnEntryFailed() {
+        String result = MoodAnalyser.analyseMood("User is Sad");
+        Assert.assertEquals("Entry Failed", result);
     }
 }
