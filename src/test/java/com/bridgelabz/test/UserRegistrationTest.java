@@ -1,15 +1,14 @@
 package com.bridgelabz.test;
 
+import com.bridgelabz.MoodAnalyser;
 import com.bridgelabz.MoodAnalyserException;
 import com.bridgelabz.UserRegistration;
 import com.bridgelabz.UserRegistrationException;
-import com.bridgelabz.main.MoodAnalyser;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class UserRegistrationTest {
     UserRegistration userRegistration = new UserRegistration();
-
     /*
        Unit test for validating first name starts with Capital Letter
        Used try catch block to handle the exception
@@ -368,25 +367,41 @@ public class UserRegistrationTest {
    */
     @Test
     public void givenMessage_WhenHappy_ShouldReturnEntrySuccessful() throws MoodAnalyserException {
-        String result = MoodAnalyser.analyseMood("User is Happy");
-        Assert.assertEquals("Entry Successful", result);
+        try {
+            String result = MoodAnalyser.analyseMood("User is Happy");
+            Assert.assertEquals("Entry Successful", result);
+        } catch (MoodAnalyserException e) {
+            System.out.println(e);
+        }
     }
 
     @Test
     public void givenMessage_WhenNotProper_ShouldReturnEntryFailed() throws MoodAnalyserException {
-        String result = MoodAnalyser.analyseMood("User is Sad");
-        Assert.assertEquals("Entry Failed", result);
+        try {
+            String result = MoodAnalyser.analyseMood("User is Sad");
+            Assert.assertEquals("Entry Failed", result);
+        } catch (MoodAnalyserException e) {
+            System.out.println(e);
+        }
     }
 
     @Test
     public void givenMessage_NULL_ShouldReturnMoodAnalyserException() throws MoodAnalyserException {
         MoodAnalyser moodAnalyser = new MoodAnalyser();
-        MoodAnalyser.analyseMood(null);
+        try {
+            MoodAnalyser.analyseMood(null);
+        } catch (MoodAnalyserException e) {
+            Assert.assertEquals(MoodAnalyserException.type.NULL, e.type);
+        }
     }
 
     @Test
     public void givenMessage_EMPTY_ShouldReturnMoodAnalyserException() throws MoodAnalyserException {
         MoodAnalyser moodAnalyser = new MoodAnalyser();
-        MoodAnalyser.analyseMood("");
+        try {
+            MoodAnalyser.analyseMood("");
+        } catch (MoodAnalyserException e) {
+            Assert.assertEquals(MoodAnalyserException.type.EMPTY, e.type);
+        }
     }
 }

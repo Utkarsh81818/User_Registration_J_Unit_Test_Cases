@@ -3,7 +3,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Purpose  - To validate all the sample emails and handling the exception
+ * Purpose  - To validate all the use case through exception handling
  * @author  - Utkarsh Mishra
  * @version - 16.0
  * @since   - 2021-10-05
